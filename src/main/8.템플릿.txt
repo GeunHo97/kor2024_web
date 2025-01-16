@@ -1,0 +1,89 @@
+정적 파일 : HTML , CSS , JS , IMG 등등
+    - 순수한 확장자의 언어만 사용이 가능하다. HTML에는 HTML 문법만 사용이 가능하다.
+
+동적 파일 : JSP , 타임리프 , 머스테치 , JSX 파일  *템플릿* , 나온이유 : 개발자가 빠른 개발 위해서 , 더 많은 기능(라이브러리)
+    - 서로 조합된 언어들을 사용 가능하다. JSP에는 HTML과JAVA 문법이 사용이 가능하다.
+        *   JSP : HTML+JAVA ,                 타임리프 : HTML+타임리프(JAVA기반)언어 ,
+            머스테치 : HTML + 머스테치 언어 ,     REACT(JSX) : HTML + JS 언어
+    - 하나의 언어가 아닌 2개 이상의 언어가 합쳐진 문법 이므로 렌더링이 필요하다.
+        *** 사용자는 브라우저(크롬/엣지/사파리)를 통해 화면 제공받는다. 브라우저는 정적파일 만 인식이 가능하다. ***
+        해결 특정한 (SPRING WEB 톰캣)서버 들이 조합된 언어들을 렌더링해서 순수한 정적파일로 변경해준다.
+
+[ 템플릿 ]
+    - 어떤 것을 만들 때 안내 역할을 하는 형식
+    1. 정의 : 동적파일로 이루어진 확장자 이면서 특정한 서버들이 컴파일하는 과정에서 순수한 HTML 로 만들어낸다.
+    2. 종류 : JSP , 타임리프 , 머스테치 , (REACT)JSX 등등
+        --> 스프링 회사 에서 공식적으로 타임리프 지원한다.
+
+[타임리프]
+    1. 정의 : 템플릿 종류의 하나로써 템플릿 엔진 , 주로 서버 에서 동적으로 렌더링 결과를 정적파일로 반환
+        * 다른 템플릿과 다르게 확장자가 .html 사용한다.
+    2. 목적 : (1) HTML이 지원하지 않는 기능 사용 , (2) 동적 웹페이지 (3) 간결한 문법 등등
+    3. 내 프로젝트에 타임리프 적용하는 방법
+        1. 그레이들 의존성 추가한다. https://start.spring.io/
+        2. 'Thymeleaf' 의존성 코드 검색
+        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    4. 스프링에서 타임리프 파일를 만드는 방법
+        스프링 프로젝트내 -> src -> main -> resources -> templates -> .html 확장자로 템플릿 파일 만들기.
+
+        * static : 정적파일 , templates : 동적파일
+* 실습
+    resources -> static     -> day58 -> index.html
+        - 스프링에서 위 경로의 정적파일 요청URL , 서버위치한PC주소:서버포트번호/day58/index.html
+        - static 이하 경로 , http://localhost:8080/day58/index.html
+    resources -> templates  -> day58 -> index.html
+        - 스프링에서 위 경로의 동적파일 요청URL 은 없다.
+        - 동적파일 요청 URL 은 정의/만들어야 한다. @Controller
+        - http://localhost:8080
+
+    5. HTML 다르게 타임리프 제공 하는 기능
+        1. 레이아웃 문법 제공 : html코드 에 다른 html 파일 첨부할 수 있다.
+        2. 레이아웃 문법 사용법
+            (1) 다른파일(html)에서 불러올 마크업에 플러그명 를 정의한다.
+                * 불러올 마크업에 플로그명은 임의로 아무거나 가능하다.
+                <마크업 th:fragment="플로그명"> </마크업>
+            (2) 불러올 마크업이 플로그가 정의 되었다면 플러그 호출하기.
+                <마크업 th:replace="~{ 불러올html파일경로.html :: 플러그명 }"> </마크업>
+
+            - th:fragment = "플러그명"                        : 해당 마크업에 플러그를 정의하는 문법
+            - th:replace = "~{ 파일명.html :: 플러그명}"       : 해당 파일명의 지정한 플러그로 설정된 마크업를 불러오는 문법
+
+    - 타임리프 문법 시작은 th:키워드
+
+    6. 동적파일(타임리프) HTTP의 URL 정의하기
+        @GetMapping("URL정의")
+        public String 메소드명(){
+            return "템플릿파일명";
+        }
+
+        * ResponseBody / RestController 적용이 안된 메소드 이여아한다.
+
+* 레이아웃 실습 : 학생 관리 웹페이지 구축
+    1. 학생 점수 등록 화면 .html
+    2. 전체 학생 점수 출력 화면 .html
+    3. 개별 학생 점수 출력 화면 .html
+    4. 학생 점수 수정 화면 .html
+    5. 학생 삭제 화면 .html
+    공통 : 헤더.html 와 푸터.html
+    - 템플릿 사용하는 이유 : 공통적인 html 코드를 재사용
+
+    header.html , footer.html ,
+    index.html : 메인페이지
+    regist.html : 학생점수 등록 페이지
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+[day59] 예제 : 회원가입 , 로그인
+
+1. MVC 패키지 구성
+    controller 패키지              :  HTTP 요청에 따른 응답하는 클래스 모임
+        @Controller ViewController 클래스      :  HTTP 요청에 따른 템플릿(VIEW) 반환 하는 컨트롤러 클래스
+        @RestController  MemberController 클래스    :  HTTP 요청에 따른 CRUD 리소스(값) 반환 하는 컨트롤러 클래스, Restful API
+    model 패키지
+        dao 패키지                 :   프로그램의 데이터베이스와 연동하여 SQL로직 코드를 작성하는 클래스 모임
+            @Component MemberDao 클래스
+        dto 패키지                 :   서로 다른 클래스들간의 데이터를 이동 클래스 모임
+            (빈X) MemberDto 클래스
+    service 패키지                 :   프로그램의 비지니스(java)로직 코드를 작성하는 클래스 모임
+        @Service MemberService 클래스
+    @SpringBootApplication AppStart 클래스                :   main 함수를 갖는 spring web 시작 클래스
+
+2. 기본적인 MVC 객체 구성
+    (1) 자바 미니 콘솔 프로젝트 : 싱글톤이란? 프로그램내 하나의 인스턴스만 존재하는 디자인패턴
+        // 싱글톤 선언
+        private 클래스명(){}
+        private static 클래스명 instance = new 클래스명();
+        public  static 클래스명 getInstance(){ return instance;}
+
+        // 싱글톤 호출
+        클래스명.getInstance();
+
+    (2) 스프링 프로젝트 : 빈(Bean) 이란 ? 스프링이 컨테이너(메모리)에서 관리하는 자바 인스턴스(객체);
+        // 빈(객체) 주입
+        @Component      , @Controller   , @Service   ,  @RestController  , @Repository
+        클래스명(){}
+
+        // 빈(객체) 가져오기
+        @Autowried
+        클래스명 변수명;
+
+
+
+
+
+
+

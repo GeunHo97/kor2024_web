@@ -1,0 +1,63 @@
+[ MVC 패턴 ]
+    - 소프트웨어 공학에서 사용하는 디자인 패턴 중 하나.
+        * 디자인 패턴 : 설계 과정에서 자주 발생하는 문제를 피하기 위한 패턴
+    1. 정의 : 프로그램을 깔끔하고 효율적으로 만들기 위해 사용되는 설계 방법
+    2. 주요 역할
+        Model       : 데이터
+        View        : 사용자에게 보여주는 화면
+        Controller  : 사용자의 요청을 처리하고 모델과 뷰 연결
+    3. 패턴 종류
+        1. MVC1     : Controller/View , MODEL 작업
+            - Controller/View 한페이지에서 작성 ( ex] JSP(HTML/JAVA) )
+            - Model
+            * 트렌드변화 : 프론트 와 백엔드가 합쳐서 한파일에 작업 하므로 분업이 어렵다. 2010년 전~~
+        2. MVC2     : Controller, View , MODEL 작업
+            - Controller
+            - View
+            - Model( Dao/Dto )
+        3. Spring MVC2-Tire3 : 더 세분화 해서 비지니스 로직를 만들었다. 서비스 레이어
+            - VIEW          : resource폴더내 html/css/js , REACT , 템플릿( JSP , 타임리프 )
+                -> 스프링 서버에서의 view 파일들은 모두 resource 안에 존재해야한다. ( 설정파일로 경로변경 가능 )
+                    resource -> static -> HTML/CSS/JS
+                    resource -> templates -> 타임리프           * 템플릿 파일들은 'templates' 안에 존재
+            - CONTROLLER    : 사용자의 HTTP 요청 과 응답 담당
+                -> 스프링 서버에서의 Controller 은 @RestController , @Controller 어노테이션 이용한 해당 클래스를 컨트롤러임을 표시
+
+            - SERVICE       : Controller 와 Model 사이로 자바의 비지니스( 기능의 실질적인 처리 ) 로직 담당
+                -> 스프링 서버에서의 Service 은 @Service 어노테이션 이용한 해당 클래스를 서비스임을 표시
+
+            - MODEL         : Service 로 부터 받은 데이터의 데이터베이스 로직 담당 , JPA , MYBites
+                DAO : 데이터베이스 로직 담당
+                -> 스프링 서버에서의 DAO 하지 않고 JPA 를 권장한다. : @Repository
+                    -> 25-01-07 기준으로 DAO 로 활용법 : @Component
+                DTO : 서로다른 레이어들간의 데이터 이동 객체 역할
+
+    4. 스프링 웹 환경에서 기존적인 MVC 패턴 패키지 구성 , 프레임
+        프로젝트명
+            -src
+                -main
+                    -java 폴더 : 자바 코드 파일
+                        - controller 폴더
+                        - model 폴더
+                            - dto 폴더
+                            - repository 폴더
+                            - entity 폴더
+                        - service 폴더
+                        - AppStart 클래스  : main함수를 갖는 @SpringBootApplication 클래스
+
+                    -resources 폴더 : 프론트엔드 코드 파일 , 설정파일
+                        - static 폴더     : 정적파일
+                        - templates 폴더  : 동적파일
+
+
+
+
+
+
+
+
+
+
+
+
+

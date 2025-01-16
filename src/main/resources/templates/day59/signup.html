@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>코리아IT 회원시스템</title>
+</head>
+<body>
+
+    <div th:replace="~{ /day59/header.html :: header }"></div>
+    <div>
+        아이디 : <input class="midInput"/> <br/>
+        비밀빌번호 : <input class="mpwdInput" /> <br/>
+        닉네임 : <input class="mnameInput" /> <br />
+        연락처 : <input class="mphoneInput" /> <br />
+        <button type="button" onclick="signup()"> 회원가입 </button>
+    </div>
+
+    <script src="/day59/member.js"></script>
+
+</body>
+</html>

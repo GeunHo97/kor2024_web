@@ -1,0 +1,17 @@
+[ 웹 과제3 ]
+    선택1(복습과제) : day56 -> RestController4 / RestDto 따라치기 3번
+
+    선택2(활용과제) : 회원가입,로그인,내정보조회,회원수정,회원탈퇴 기능의 Rest API Controller 구축
+        1. MemberController 1개 선언 , MemberDto 1개 선언
+        2. 회원가입     @PostMapping
+        2. 로그인       @PostMapping
+        3. 회원수정     @PutMapping
+        4. 내정보보기    @GetMapping
+        5. 회원탈퇴     @DeleteMapping
+        6. MemberDto 의 멤버변수 : 회원번호 , 아이디 , 비밀번호 , 이름 , 전화번호 로 한다.
+        힌트]
+            각 기능별 1. URL정의 2.쿼리스트링/BODY 선택 3. 매개변수/리턴값 => REST API 정의 명세서
+
+- 정답이 필요한 경우 메일/카톡 로 요청하기.
+- 제출 : itdanja@kakao.com , 01/07(화) 19:00까지 , 제출일 이후에 제출해도 됩니다.
+- 제출파일 : 구현한 코드 및 파일이 위치한 본인 github 상세 주소

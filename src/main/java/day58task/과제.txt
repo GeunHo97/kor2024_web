@@ -1,0 +1,19 @@
+[ 웹 과제5 ]
+    선택1(복습과제) :
+        1. resources -> templates -> day58 -> student -> 타임리프 html
+        2. java -> day58 -> AppStart
+            2번정도 다시 만들어보기
+    선택2(활용과제) : resources -> templates -> day58 -> student -> 타임리프 html에 자바와 연동
+            1. 점수 등록
+            2. 전체 점수 출력
+            3. 특정 학생 점수 수정
+            4. 특정 학생 점수 삭제
+            구축하기.
+            * 조건 : JS 이용한 Fetch 함수로 day57task 에서 만든 REST API 와 통신하여 기능을 연동하시오.
+
+- 정답이 필요한 경우 메일/카톡 로 요청하기.
+- 제출 : itdanja@kakao.com , 01/09(목) 19:00까지 , 제출일 이후에 제출해도 됩니다.
+- 제출파일 : 구현한 코드 및 파일이 위치한 본인 github 상세 주소
+
+
+

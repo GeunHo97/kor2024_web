@@ -1,0 +1,151 @@
+[ HTTP ]
+    1. 웹 통신 규약/규칙/약속 , 하이퍼텍스트(HyperText Transfer Protocol )
+        --> 문자타입의 자료만 통신이 가능하다. 즉] 객체타입의 자료는 통신이 불가능하다.
+    2. 특징
+           1. 상태가 무상태 프로토콜이다. ( 상태가 없는 / 저장기능이 없다 )
+           2. 독립적이다, 이전 요청 과 현재 요청은 다르므로 서로 관련이 없다.
+           3. TCP/IP 프로토콜의 종속되어 동작하며 port는 80 사용한다.
+    3. 통신 주소체계
+        URL : 웹 주소 , 네트워크 상의 자료가 어디에 있는지 알려주는 규약
+             https://finance.naver.com/item/main.naver
+        URI : 각종 자료들의 유일한 이름이나 위치를 표시하는 규약 , URL + 자원포함
+            https://finance.naver.com/item/main.naver?code=089590
+    4. HTTPS : HTTP의 보안이 강화된 버전이다.
+        - 통신의 인증과 암호화를 위해 만들어진 프로토콜
+        - 인증서 발급 업체로 부터 인증서 발급 받는다. ex] 건강보험, 자동차보험 처럼 홈페이지의 보험 체계
+
+    5. HTTP Header ( HTTP 통신 정보 )
+        1. HTTP METHOD          : http 이용한 통신 요청시 요청 분류 하는 함수.
+        2. HTTP HOST            : http 이용한 통신 요청 하는 서버의 URL 주소
+        3. HTTP CONTENT-TYPE    : http 이용한 요청 과 응답시 보내는 데이터의 타입 정보
+        4. HTTP BODY            : http 이용한 보내는 데이터의 내용/본문 , POST/PUT 사용가능 , GET/DELETE 사용불가능.
+
+    6. HTTP Method
+        1. GET      : REST API(HTTP) 에서는 주로 자원 호출 요청[ R ]   @GetMapping
+        2. POST     : REST API(HTTP) 에서는 주로 자원 저장 요청[ C ]   @PostMapping
+        3. PUT      : REST API(HTTP) 에서는 주로 자원 수정 요청[ U ]   @PutMapping
+        4. DELETE   : REST API(HTTP) 에서는 주로 자원 삭제 요청[ D ]   @DeleteMapping
+
+    7. HTTP 사용하는 소프트웨어, 라이브러리 , 프레임워크
+        1. 브라우저(크롬,엣지,사파리 등등) 2.fetch함수 3. spring web(톰캣서버)  4.talend api 등등
+
+    8. HTTP 통신을 테스트 하는 방법 *
+        1. [크롬 브라우저 ] 인터넷 구글에서 'talend api' 검색
+        2. 첫번째 홈페이지 클릭 , https://chromewebstore.google.com/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm?hl=ko
+        3. [확장 프로그램 추가] -> 설치 진행
+
+        [ talend api 사용하기 ]
+        1. [크롬 브라우저 ] -> [확장 프로그램 ] -> 'talend api' 클릭 ( 없으면 설치가 안된 상태 )
+        2. HTTP URL 테스트 하기
+
+    9. HTTP를 이용한 데이터를 통신
+            request     요청
+                + 데이터 보내는 방법 2가지
+                    (1) 쿼리스트링 방식 , url 경로상의 ? 이용하여 경로 와 매개변수 구분 , HTTP method 의 모든 메소드 사용.
+                        1.URL ? 매개변수명1=값1 & 매개변수명2=값2
+                            - http://localhost:8080/findid?bno=1
+                            - https://bymono.com/product/detail.html?product_no=30188&cate_no=1&display_group=30
+                                https://bymono.com/product/detail.html : html이 위치한 경로
+                                ? 부터 쿼리스트링 시작된다. product_no=30188 , cate_no=1 , &display_group=30  매개변수 3개
+                        2. 자바 Controller 메소드 에서 URL 상의 쿼리스트링 매개변수 반환방법
+                            - 메소드명( @RequestParam 타입 매개변수명 ){ }
+                            - 메소드명( 타입 매개변수명 ){ }
+                                - http://localhost:8080/findid?bno=1
+                                - 메소드명( int bno ) {}
+
+                    (2) body 방식 , HTTP header 안에 내용물 추가하는 방법
+                        - HTTP method의 POST 와 PUT 에서만 지원하는 기능. 즉] GET, DELETE는 body 를 지원하지 않는다.
+                        1. 쿼리스트링 과 다르게 URL 경로상의 데이터를 표시하지 않는다. [ 쿼리스트링 방식보다 보안성이 좋다. ]
+                            - body의 content-type 명시하여 데이터를 보내준다.
+                            - 주로 content-type : 'application/json'        : JSON( 자바스크립트 객체 )
+                        2. content-type : 'application/json' 으로 하고 body 에 { '속성명':값 , '속성명' : 값 }
+                        3. 자바 Controller 메소드 에서 body 의 데이터를 매개변수로 반환 방법
+                            - 메소드명( @RequestBody 타입 매개변수명 ) { }
+
+            response    응답
+
+    10. HTTP 이용한 통신 라이브러리
+        0. [크롬] talend api , 테스트용도.
+        1. [JS] Fetch
+        2. [JQUERY] AJAX
+        3. [JS] AXIOS
+
+
+
+[ 실습1 ] spring web 에서 post , get , put , delete 메소드를 사용하여 HTTP 통신 주소 만들기
+                                    내PC , 톰캣서버
+       사용자 --------------------> SPRING WEB
+                                   localhost:8080
+
+       사용자 --------------------> http://localhost:8080
+                                [ Whitelabel Error Page ]
+
+       사용자 -----------------------------------> postMethod() 실행
+            [POST] http://localhost:8080/day52
+
+       사용자 -----------------------------------> getMethod() 실행
+            [GET] http://localhost:8080/day52
+
+       사용자 -----------------------------------> putMethod() 실행
+            [PUT] http://localhost:8080/day52
+
+       사용자 -----------------------------------> deleteMethod() 실행
+            [delete] http://localhost:8080/day52
+
+[ 웹 과제1 day53 ]
+    Spring web 에서 post , get , put , delete 메소드를 사용하여 HTTP 주소 만들기
+    조건1 : 프로젝트내 src -> main -> java -> day53task 폴더 생성하여 진행 하시오.
+    조건2 : 앞전에 실행한 스프링 서버는 꼭 종료 하고 테스트 진행
+    조건3 : 'locahost:8080/day53task' 주소로 post,get,put,delete 매핑 함수 만들기
+    조건4 : 통신 결과는 ' OOO 메소드 통신 성공 ' 반환/응답 하시오.
+    조건5 : 크롬 확장 프로그램 : talend API Tester 이용한 테스트 진행 하시오.
+
+    - 정답이 필요한 경우 메일/카톡 로 요청하기.
+    - 제출 : itdanja@kakao.com , 01/02(목) 19:00까지
+    - 제출파일 : 구현한 코드 파일이 위치한 본인 github 상세 주소
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,88 @@
+[ 프로젝트 생성 ]
+1. 인텔리제이에서 gradle 프로젝트 생성 , 자바프로젝트 X
+	1. Name :  kor2024_web
+	2. Location : 임의
+	3. Build system : *gradle*
+	4. JDK : 17
+	5. Gradle DSL : Groovy
+	[ Create]
+
+2. gradle 프로젝트 구조
+	- 프로젝트명
+		- gradle 폴더( gradle 관련 라이브러리 ) / 신경X
+		- src 폴더
+			- main 폴더
+				- java 폴더       : 자바 코드 위주의 파일 작성
+				- resources 폴더  : HTML/CSS/JS , 설정 파일 위주의 파일 작성
+
+3. spring web 설치한다.
+    1. https://spring.io/           스프링 공식 홈페이지 접속한다.
+    2. https://start.spring.io/     상단 메뉴에 [project] --> [spring initialize] 클릭
+    3. 옵션 선택
+        Project : Gradle - Groovy
+        Language : Java
+        Spring Boot : 3.x.x
+        Project Metadata : 프로젝트 메타정보 (생략)
+        Packaging : Jar
+        Java : 17
+    4. Dependencies : 라이브러리 선택
+        [ Add dependencies...] 버튼 클릭
+            spring web 검색후 결과를 클릭 해서 Dependencies 목록에 추가한다.
+    5. 하단에 [ EXPLORE ] 클릭
+    6. 상단에 [COPY] 클릭
+    7. 현재 프로젝트 폴더 내 build.gradle 파일 클릭
+    8. 기존 코드 작성 ---> 복사한 코드 붙여넣기 ---> 화면 왼쪽 상단 코끼리(새로고침)버튼
+    * 하단에 다운로드 진행 상태 확인
+
+4. spring web 실행하기.
+    1. main를 갖는 클래스 위에 @SpringBootApplication               ( 자동완성 작성 )
+    2. main함수 안에 SpringApplication.run( 현재클래스명.class);     ( 자동완성 작성 )
+    - 현재 클래스 실행 --> 브라우저에서 http://localhost:8080 접속
+        -> Whitelabel Error Page 정상 실행
+
+5. 프로젝트내 resource 의 static 폴더 html 접속하기
+    http://localhost:8080/day52/boardview.html
+
+6. 자바 함수를 HTTP 웹 통신이 가능한 함수로 만들기
+    1. 컨트롤러 클래스명에 위에 @RestController 작성한다. ( 자동완성 작성 )
+    2. 각 함수별
+        @PostMapping("url")    : HTTP의 POST 메소드 URL 만들고 연결 가능한 함수 정의
+        @GetMapping("url")      :  HTTP의 GET 메소드 URL 만들고 연결 가능한 함수 정의
+
+JDK : 자바 개발도구 v17 ( 자바실행에 필요한 컴파일러 , 각종 미리 만들어진 라이브러리/클래스 jar ) 포함
+라이브러리 : ( 도구 ) 클래스,인터페이스 들을 모아둔 압축파일 .jar
+프레임워크 : ( 작업틀 ) 프로그램 개발 하기 위해 미리 만들어진 작업틀을 제공하는 프로그램
+    * 프레임워크 > 라이브러리 > 클래스 > 코드
+    * 코드가 작은 단위 이고 프레임워크 가장 큰 단위이다. 즉] 프레임워크 안에는 라이브러리 와 클래스들이 존재한다.
+
+Spring 프레임워크 : 자바를 이용한 라이브러리 들의 집합들로 만든 프로그램
+Spring Boot : spring 세팅/설정 를 간소화/자동화 지원하는 spring의 업그레이드 버전
+
+spring 프로젝트
+    [무료]
+    - 인텔리제이 무료 버전에서는 spring 프로젝트 생성이 불가능하다.
+    - 대안!!! : 인텔리제이 에서 gradle 프로젝트 만들고 gradle 를 통해 spring 설치한다.
+    [ 유료 ]
+    - 인텔리제이 유료 버전에서는 spring 프로젝트 생성이 가능하다.
+
+gradle 이란 ? 그루비 언어를 이용한 빌드(설치) 자동화 시스템
+    - 그루비 : java 기반으로 만들어진 객체지향 언어
+    - 외부 라이브러리/프레임워크 등 설치를 해주고 관리 해주는 프로그램
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
